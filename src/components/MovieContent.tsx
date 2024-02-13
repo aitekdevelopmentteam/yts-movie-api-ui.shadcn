@@ -1,8 +1,6 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { Skeleton } from "./ui/skeleton";
-// Import Link if you need to navigate to internal routes
-// import { Link } from "react-router-dom";
 import {
   CardContent,
   CardDescription,
@@ -17,7 +15,7 @@ interface Movie {
   medium_cover_image: string;
   genres: string[];
   description_full: string;
-  url: string; // This field might be repurposed or unused based on the new button functionality
+  url: string; // Note: This might be unused based on new button functionalities
   rating: number;
 }
 
@@ -88,10 +86,10 @@ function MovieContent() {
             <p className="my-5">
               <CardTitle className="mb-3">Watch Movie</CardTitle>
               <div className="flex gap-2">
-                <Button variant="secondary" size="sm" onClick={() => window.open(`#`, "_blank")}>
+                <Button variant="secondary" size="sm" onClick={() => window.location.href = "https://yts-movie-api-ui-shadcn-plz21hdsl-master-dees-projects.vercel.app/movie/59748#720p"}>
                   Play Movie 720p
                 </Button>
-                <Button variant="secondary" size="sm" onClick={() => window.open(`#`, "_blank")}>
+                <Button variant="secondary" size="sm" onClick={() => window.location.href = "https://yts-movie-api-ui-shadcn-plz21hdsl-master-dees-projects.vercel.app/movie/59748#1080p"}>
                   Play Movie 1080p
                 </Button>
               </div>
