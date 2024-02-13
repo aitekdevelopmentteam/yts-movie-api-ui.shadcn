@@ -1,8 +1,8 @@
-// MovieContent.tsx
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { Skeleton } from "./ui/skeleton";
-import { Link } from "react-router-dom";
+// Import Link if you need to navigate to internal routes
+// import { Link } from "react-router-dom";
 import {
   CardContent,
   CardDescription,
@@ -17,7 +17,7 @@ interface Movie {
   medium_cover_image: string;
   genres: string[];
   description_full: string;
-  url: string;
+  url: string; // This field might be repurposed or unused based on the new button functionality
   rating: number;
 }
 
@@ -86,17 +86,20 @@ function MovieContent() {
           <div className="sticky bottom-0 z-50 w-full p-3 rounded-t-2xl bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
             <p>Rating: {movie.rating}</p>
             <p className="my-5">
-              <CardTitle className="mb-3">Movie URL</CardTitle>
-              <Link to={movie.url} target="_blank">
-                <Button variant="secondary" size="sm">
-                  {movie.title_long}
+              <CardTitle className="mb-3">Watch Movie</CardTitle>
+              <div className="flex gap-2">
+                <Button variant="secondary" size="sm" onClick={() => window.open(`#`, "_blank")}>
+                  Play Movie 720p
                 </Button>
-              </Link>
+                <Button variant="secondary" size="sm" onClick={() => window.open(`#`, "_blank")}>
+                  Play Movie 1080p
+                </Button>
+              </div>
             </p>
             <CardTitle className="mb-1">Genre</CardTitle>
             <div className="flex flex-row gap-2">
-              {movie.genres.map((genre) => (
-                <CardDescription>{genre}</CardDescription>
+              {movie.genres.map((genre, index) => (
+                <CardDescription key={index}>{genre}</CardDescription>
               ))}
             </div>
           </div>
